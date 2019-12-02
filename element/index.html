@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>easy-player</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    </head>
+    <body>      
+        <!-- <easy-player video-url="http://demo.easydss.com:10080/fvod/rT6ELLbig.1784f6bbe65954195d3b/rT6ELLbig/video.m3u8" aspect="300:100" loop="true"></easy-player> -->
+        <easy-player id="test2" live="true" aspect="300:100" show-custom-button="true"></easy-player>
+        <!-- <easy-player video-url="https://mister-ben.github.io/videojs-flvjs/bbb.flv" live="true" aspect="300:100"></easy-player> -->
+        <button>开始播放</button>
+    <script type="text/javascript" src="easy-player-element.min.js"></script>
+</body>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+    <script>
+        
+        $(document).ready(function(){
+            $("button").click(function(){
+                //获取接口 的地址
+                $.get("http://127.0.0.1:10800/api/v1/touchchannelstream?channel=1&protocol=HLS",function(data,status){
+                    //返回的数据
+                    console.log(data);
+                    $("#test2").attr("video-url","http://127.0.0.1:10800"+ data.EasyDarwin.Body.URL);
+                });
+            });
+        });
+    </script>
+</html>

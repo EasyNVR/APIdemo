@@ -1,0 +1,7 @@
+http://114.115.146.187:10810/dev/test/flv/hls/stream_1.flv
+rtmp://114.115.146.187:11757/hls/stream_1
+http://114.115.146.187:10810/dev/test/hls/stream_1/stream_1_live.m3u8
+
+三种取视频流例子
+
+https://www.npmjs.com/package/easy-player 播放器插件地址

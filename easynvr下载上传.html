@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=`, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>EasyNVR-demo</title>
+	<!-- 引入element-ui样式CDN链接 -->
+	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<style>
+	#app{
+			text-align: center;
+			margin: auto;
+	}
+</style>
+<body>
+	
+	<div id="app">
+		<h2>EasyNVR-通道上传下载demo</h2>
+		<!-- 导入element-ui上传组件 -->
+		<el-upload class="upload-demo" drag :action=action multiple>
+			<i class="el-icon-upload"></i>
+			<div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+			<div class="el-upload__tip" slot="tip"></div>
+		</el-upload>
+		<!-- 下载按钮绑定一个下载方法 -->
+		<el-button type="success" size="mini" @click="download">下载通道配文件</el-button>
+
+	</div>
+	
+	<!-- 引入Vue样式CDN链接 -->
+	<script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
+	<!-- 引入element-ui JS CDN链接 -->
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+	<script>
+		//定义一个变量来存放服务端接口ip和端口地址
+		var httpStr = "http://127.0.0.1:10800"
+		// 定义一个Vue实例
+		new Vue({
+			el: '#app',
+			data: {
+				//绑定上传接口地址到element-ui上传组件中
+				action: httpStr + "/api/v1/uploadxlsx"
+			},
+			methods: {
+				//定义一个下载方法
+				download() {
+					//填入下载接口地址
+					window.open(httpStr + "/api/v1/downloadxlsx");
+				}
+			},
+		})
+	</script>
+</body>
+
+</html>
